@@ -27,6 +27,64 @@ export default function CalendarPage({isOpen}:CalendarPageProps) {
         }, 350)
     }, [isOpen])
 
+    const [hoverEvent, setHoverEvent] = useState<{
+        title: string;
+        start: string;
+        end: string;
+        extendedProps: {
+            description: string
+        },
+        x: number;
+        y: number;
+    } | null>(null)
+
+    const handleEventMouseEnter = (info: any) => {
+        const rect = info.el.getBoundingClientRect();
+
+        const modalWidth = 250;
+        const modalHeight = 150;
+        const margin = 10;
+
+        // 基本はイベントの右側
+        let x = rect.right + margin;
+        let y = rect.top;
+
+        //右側に表示
+        if (x + modalWidth > window.innerWidth - margin) {
+            //右に入らない → 左側
+            x = rect.left - modalWidth - margin;
+        }
+
+        //左にも入らない場合 → 画面左端に合わせる
+        if (x < margin) {
+            x = margin;
+        }
+        //下側にはみ出す場合
+        if (y + modalHeight > window.innerHeight) {
+            y = window.innerHeight - modalHeight - margin;
+        }
+
+        //上側にはみ出す場合
+        if (y < margin) {
+            y = margin;
+        }
+
+        setHoverEvent({
+            title: info.event.title,
+            start: info.event.start?.toLocaleString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit"}) ?? "",
+            end: info.event.end?.toLocaleString("ja-JP", { year: "numeric", month: "2-digit", day: "2-digit", hour: "2-digit", minute: "2-digit"}) ?? "",
+            extendedProps: {
+                description: info.event.extendedProps.description
+            },
+            x,
+            y,
+        });
+    };
+
+    const handleEventMouseLeave = () => {
+        setHoverEvent(null);
+    };
+
     //イベントデータの取得
     useEffect(() => {
         fetch("http://localhost:8080/api/getevent", {
@@ -86,6 +144,9 @@ export default function CalendarPage({isOpen}:CalendarPageProps) {
                     </div>
                 )}
 
+                eventMouseEnter={handleEventMouseEnter}
+                eventMouseLeave={handleEventMouseLeave}
+
                 dateClick={(info) => {
                     //新規イベント登録ページ
                     navigate("/reservationadd", {
@@ -108,6 +169,20 @@ export default function CalendarPage({isOpen}:CalendarPageProps) {
                     });
                 }}
             />
+            {hoverEvent && (
+                <div
+                    className={styles.eventModal}
+                    style={{
+                        left: hoverEvent.x,
+                        top: hoverEvent.y,
+                    }}
+                >
+                    <div>{hoverEvent.title}</div>
+                    <div>詳細：{hoverEvent.extendedProps.description}</div>
+                    <div>開始：{hoverEvent.start}</div>
+                    <div>終了：{hoverEvent.end}</div>
+                </div>
+            )}
         </div>
     );
 }

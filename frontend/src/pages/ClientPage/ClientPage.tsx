@@ -100,7 +100,7 @@ export default function ClientPage() {
                 className1={styles.button}
             />
 
-            <div>
+            <div className={styles.table}>
                 <Table
                     columns={columns}
                     rows={rows}

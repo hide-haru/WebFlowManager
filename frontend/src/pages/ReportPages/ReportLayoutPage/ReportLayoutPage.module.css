@@ -23,6 +23,8 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 10px;
 }
 
 .selectLayout h2 {
@@ -52,10 +54,12 @@
 }
 
 .toolbar button {
+    display: block;
+    font-weight: bold;
     padding: 8px 16px;
     cursor: pointer;
     border: none;
-    background-color: #3d3d3d;
+    background-color: #5e5d5d;
     color: #fff;
     border-radius: 5px;
 }
@@ -112,6 +116,30 @@
     width: 100%;
     box-sizing: border-box;
     padding: 6px 8px;
+}
+
+.detailId {
+    display: flex;
+}
+
+.propertyTitle {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.propertyTitle h3 {
+    margin: 0;
+}
+
+.propertyTitle button {
+    display: block;
+    font-weight: bold;
+    color: #535353;
+    border: 1px solid #535353;
+    border-radius: 2px;
+    padding: 5px 20px;
 }
 
 /* 

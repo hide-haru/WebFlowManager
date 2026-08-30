@@ -11,6 +11,8 @@ export type Element = {
     y: number;
     width: number;
     height: number;
+    fontSize: number;
+    textAlign: string;
 };
 
 export type ReportLayout = {

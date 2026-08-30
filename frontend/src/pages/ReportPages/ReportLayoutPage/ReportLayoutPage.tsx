@@ -63,7 +63,9 @@ export default function ReportLayout() {
             x: 50,
             y: 50,
             width: 100,
-            height: 40
+            height: 40,
+            fontSize: 20,
+            textAlign: "left",
         };
         setElements(prev => [...prev, newElements])
     }
@@ -78,7 +80,9 @@ export default function ReportLayout() {
             x: 50,
             y: 100,
             width: 200,
-            height: 40
+            height: 40,
+            fontSize: 20,
+            textAlign: "left",
         }
 
         setElements(prev => [...prev, newElements]);
@@ -403,7 +407,7 @@ export default function ReportLayout() {
             tabIndex={0}
         >
             <div className={styles.selectLayout}>
-                <h2>帳票レイアウト作成</h2>
+                <h2>レイアウト作成</h2>
                 {/* レイアウト一覧 */}
                 <div className={styles.layoutList}>
                     <select
@@ -431,7 +435,6 @@ export default function ReportLayout() {
                     <button onClick={addInput}>入力項目</button>
                     <button>線</button>
                     <button>表</button>
-                    <button onClick={dupulicateElement}>複製</button>
                     <button onClick={saveLayout}>保存</button>
                 </div>
             
@@ -450,7 +453,9 @@ export default function ReportLayout() {
                                 left: `${element.x}px`,
                                 top: `${element.y}px`,
                                 width: `${element.width}px`,
-                                height: `${element.height}px`
+                                height: `${element.height}px`,
+                                fontSize: `${element.fontSize}px`,
+                                textAlign: 'center'
                             }}
                             onMouseDown={(e) => {
                                 e.stopPropagation();
@@ -525,15 +530,21 @@ export default function ReportLayout() {
 
                 {/* プロパティ */}
                 <div className={styles.properties}>
-                    <h3>プロパティ</h3>
+                    <div className={styles.propertyTitle}>
+                        <h3>プロパティ</h3>
+                        <button onClick={dupulicateElement}>複製</button>
+                    </div>
 
                     {selectedElement ? (
                         <>
                             <div className={styles.propertyItem}>
-                                <label>ID：</label>
-                                <span>
-                                    {selectedElement.detailId}
-                                </span>
+                                <div className={styles.detailId}>
+                                    <span>ID：</span>
+                                    <span>
+                                        {selectedElement.detailId}
+                                    </span>
+                                </div>
+                                
                             </div>
 
                             {selectedElement.type === "text" ? (
@@ -645,6 +656,21 @@ export default function ReportLayout() {
                                         updateElement(
                                             selectedElement.detailId,
                                             "height",
+                                            Math.max(1, Number(e.target.value))
+                                        )
+                                    }
+                                />
+                            </div>
+
+                            <div className={styles.propertyItem}>
+                                <label>フォントサイズ</label>
+                                <input
+                                    type="text"
+                                    value={selectedElement.fontSize}
+                                    onChange={(e) =>
+                                        updateElement(
+                                            selectedElement.detailId,
+                                            "fontSize",
                                             Math.max(1, Number(e.target.value))
                                         )
                                     }

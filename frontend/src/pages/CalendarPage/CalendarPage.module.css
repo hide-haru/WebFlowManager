@@ -5,7 +5,24 @@
 
 .event {
     width: 100%;
-    border: 1px solid #ccc;
-    background-color: #ccc;
+    border: 1px solid #dad8d8;
+    background-color: #dad8d8;
     border-radius: 3px;
+    overflow: hidden;
+    color: rgb(99, 99, 99);
+}
+
+.eventModal {
+    position: fixed;
+    width: 250px;
+    z-index: 9999;
+
+    background: white;
+    border: 1px solid #dad8d8;
+    border-radius: 6px;
+    padding: 10px;
+
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    /* background: rgba(0, 0, 0, 0.2); */
+    pointer-events: none;
 }
