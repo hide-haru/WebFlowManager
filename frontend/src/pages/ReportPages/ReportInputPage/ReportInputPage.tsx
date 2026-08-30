@@ -4,8 +4,6 @@ import { useLocation } from 'react-router-dom'
 import styles from './ReportInputPage.module.css'
 
 import type {
-    InputType,
-    ElementType,
     Element,
     ReportLayout
 } from '../types/report'
@@ -25,7 +23,7 @@ export default function ReportInputPage() {
     const [layouts, setLayouts] = useState<ReportLayout[]>([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/getreportlayout",{
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getreportlayout`,{
             credentials: "include"
         })
         .then(reponse => reponse.json())
@@ -70,7 +68,7 @@ export default function ReportInputPage() {
             reportCode: String(selectReport.reportCode)
         });
 
-        fetch(`http://localhost:8080/api/getreportlayoutdetail?${params}`, {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getreportlayoutdetail?${params}`, {
             credentials: "include"
         })
         .then(response => response.json())
@@ -109,7 +107,7 @@ export default function ReportInputPage() {
         }
         console.log(report);
 
-        fetch("http://localhost:8080/api/saveReport", {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/saveReport`, {
             credentials: "include",
             method: "POST",
             headers: {

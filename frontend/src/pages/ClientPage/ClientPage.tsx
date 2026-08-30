@@ -56,7 +56,7 @@ export default function ClientPage() {
             clientCode: pageClientCode
         });
 
-        fetch(`http://localhost:8080/api/getclientdetaillist?${params}`,{
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getclientdetaillist?${params}`,{
             credentials: "include"
         })
         .then(response => response.json())

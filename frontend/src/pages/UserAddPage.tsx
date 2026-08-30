@@ -25,7 +25,7 @@ export default function UserAddPage() {
         }
 
         const response = await fetch(
-            "http://localhost:8080/api/useradd",
+            `${import.meta.env.VITE_API_BASE_URL}/api/useradd`,
             {
                 method: "POST",
                 headers: {

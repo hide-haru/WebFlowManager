@@ -80,7 +80,7 @@ export default function ReservationDetailPage() {
         if (!isEdit) {
             //POST:新規
             const response = await fetch(
-                `http://localhost:8080/api/postnewevent`,
+                `${import.meta.env.VITE_API_BASE_URL}/api/postnewevent`,
                 {
                     method: "POST",
                     headers: {
@@ -98,7 +98,7 @@ export default function ReservationDetailPage() {
         } else {
             //POST:更新
             const response = await fetch(
-                `http://localhost:8080/api/postaddevent`,
+                `${import.meta.env.VITE_API_BASE_URL}/api/postaddevent`,
                 {
                     method: "POST",
                     headers: {
@@ -129,7 +129,7 @@ export default function ReservationDetailPage() {
             description: description
         };
 
-        fetch("http://localhost:8080/api/deleteevent",{
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/deleteevent`,{
             credentials: "include",
             method: "DELETE",
             headers: {

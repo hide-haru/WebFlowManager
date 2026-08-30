@@ -4,7 +4,6 @@ import styles from './ReportLayoutPage.module.css'
 
 import type {
     InputType,
-    ElementType,
     Element,
     ReportLayout
 } from '../types/report'
@@ -22,7 +21,7 @@ export default function ReportLayout() {
     //帳票一覧の状態管理
     const [layouts, setLayouts] = useState<ReportLayout[]>([]);
     useEffect(() => {
-        fetch("http://localhost:8080/api/getreportlayout",{
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getreportlayout`,{
             credentials: "include"
         })
         .then(reponse => reponse.json())
@@ -356,7 +355,7 @@ export default function ReportLayout() {
         // layouts.push(newLayout);
 
         const response = await fetch(
-            "http://localhost:8080/api/savelayout",
+            `${import.meta.env.VITE_API_BASE_URL}/api/savelayout`,
             {
                 method: "POST",
                 headers: {
@@ -389,7 +388,7 @@ export default function ReportLayout() {
             reportCode: String(reportCode)
         });
 
-        fetch(`http://localhost:8080/api/getreportlayoutdetail?${params}`, {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getreportlayoutdetail?${params}`, {
             credentials: "include"
         })
         .then(response => response.json())

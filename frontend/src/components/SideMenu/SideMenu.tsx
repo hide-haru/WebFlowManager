@@ -24,7 +24,7 @@ export default function SideMnu({
     const [getPageNames, setGetPageNames] = useState<pageName[]>([]);
 
     useEffect(() => {
-        fetch("http://localhost:8080/api/getpagename", {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getpagename`, {
             credentials: "include"
         })
         .then(response => response.json())

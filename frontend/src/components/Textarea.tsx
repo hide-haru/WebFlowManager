@@ -1,4 +1,3 @@
-import styles from '../components/common.module.css'
 
 type Props = {
     label?: string;

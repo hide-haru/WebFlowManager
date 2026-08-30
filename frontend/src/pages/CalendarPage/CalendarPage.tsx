@@ -87,7 +87,7 @@ export default function CalendarPage({isOpen}:CalendarPageProps) {
 
     //イベントデータの取得
     useEffect(() => {
-        fetch("http://localhost:8080/api/getevent", {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getevent`, {
             credentials: "include"
         })
         .then(response => response.json())
@@ -126,7 +126,7 @@ export default function CalendarPage({isOpen}:CalendarPageProps) {
                 }}
 
                 selectable={true}
-                select={(info) => {
+                select={() => {
                     // console.log(info.start);
                     // console.log(info.end);
                 }}

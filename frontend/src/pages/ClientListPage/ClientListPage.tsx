@@ -81,7 +81,7 @@ export default function ClientListPage() {
             pic: searchArea.pic
         });
 
-        fetch(`http://localhost:8080/api/getclientlist?${params}`, {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getclientlist?${params}`, {
             credentials: "include"
         })
         .then(response => response.json())

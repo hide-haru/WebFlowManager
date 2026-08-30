@@ -15,12 +15,12 @@ const MainLayout = ({isOpen, setIsOpen}: MainLayoutProps) => {
     const location = useLocation();
     const navigate = useNavigate();
 
-    const [checkingSession, setCheckingSession] = useState(true);
+    const [, setCheckingSession] = useState(true);
 
     useEffect(() => {
         setCheckingSession(true);
 
-        fetch("http://localhost:8080/api/session/check", {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/session/check`, {
             credentials: "include"
         })
         .then(response => {

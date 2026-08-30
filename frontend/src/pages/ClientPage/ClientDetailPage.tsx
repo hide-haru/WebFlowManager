@@ -64,7 +64,7 @@ export default function ClientDetailPage() {
 
             setData(newData);
 
-            fetch("http://localhost:8080/api/newclientdetail", {
+            fetch(`${import.meta.env.VITE_API_BASE_URL}/api/newclientdetail`, {
                 credentials: "include",
                 method: "POST",
                 headers: {
@@ -87,7 +87,7 @@ export default function ClientDetailPage() {
         const params = new URLSearchParams({
             detailId: String(location.state)
         });
-        fetch(`http://localhost:8080/api/getclientdetail?${params}`, {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/getclientdetail?${params}`, {
             credentials: "include"
         })
         .then(response => response.json())
@@ -106,39 +106,6 @@ export default function ClientDetailPage() {
     }, [])
 
 
-    const handleCreate = () => {
-        const convertData = {
-            ...data,
-            workStartTime: data?.workStartTime
-                ? data.workStartTime.replace(/\//g, "-").replace(" ", "T").length === 16
-                    ? data.workStartTime.replace(/\//g, "-").replace(" ", "T") + ":00"
-                    : data.workStartTime.replace(/\//g, "-").replace(" ", "T")
-                : "",
-            workEndTime: data?.workEndTime
-                ? data.workEndTime.replace(/\//g, "-").replace(" ", "T").length === 16
-                    ? data.workEndTime.replace(/\//g, "-").replace(" ", "T") + ":00"
-                    : data.workEndTime.replace(/\//g, "-").replace(" ", "T")
-                : ""
-        };
-
-        fetch("http://localhost:8080/api/postclientdetailcreate", {
-            credentials: "include",
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(convertData)
-        })
-        .then(response => response.json())
-        .then(data => {
-            alert(data.message);
-
-            if (data.success) {
-                navigate("/clientlist");
-            }
-        })
-    }
-
     const handleEdit = () => {
 
         const convertData = {
@@ -155,7 +122,7 @@ export default function ClientDetailPage() {
                 : ""
         };
 
-        fetch("http://localhost:8080/api/postclientdetailadd", {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/postclientdetailadd`, {
             credentials: "include",
             method: "PUT",
             headers: {
@@ -176,7 +143,7 @@ export default function ClientDetailPage() {
 
     const handleDelete = () => {
         console.log(data?.id);
-        fetch("http://localhost:8080/api/postclientdetaildelete", {
+        fetch(`${import.meta.env.VITE_API_BASE_URL}/api/postclientdetaildelete`, {
             credentials: "include",
             method: "DELETE",
             headers: {

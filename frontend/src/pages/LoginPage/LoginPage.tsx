@@ -32,7 +32,7 @@ export default function LoginPage() {
         };
 
         const response = await fetch(
-            "http://localhost:8080/api/login",
+            `${import.meta.env.VITE_API_BASE_URL}/api/login`,
             {
                 method: "POST",
                 headers: {
