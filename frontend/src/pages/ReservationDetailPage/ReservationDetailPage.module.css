@@ -1,0 +1,68 @@
+.reservationDetailPage {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 20px;
+}
+
+.reservationDetailPage h2 {
+    width: 600px;
+    max-width: 100%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.form {
+    width: 600px;
+    max-width: 100%;
+    margin: 50px auto 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    border: 2px solid #e6e6e6;
+    border-radius: 10px;
+    padding: 100px 100px;
+}
+
+.container {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+
+.container > * {
+    flex: 1;
+}
+
+.container2 {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.container2 > * {
+    width: 100%;
+}
+
+.buttonArea {
+    display: flex;
+    flex-direction:column;
+    gap: 10px;
+}
+
+.button {
+    background: #ccc;
+    border: none;
+}
+
+.input {
+    width: 100%;
+    height: 34px;
+    box-sizing: border-box;
+}
+
+.textarea {
+    width: 100%;
+    box-sizing: border-box;
+}
+

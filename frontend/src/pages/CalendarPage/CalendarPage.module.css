@@ -1,0 +1,11 @@
+.calendarContainer {
+    width: 90%;
+    margin: 20px auto;
+}
+
+.event {
+    width: 100%;
+    border: 1px solid #ccc;
+    background-color: #ccc;
+    border-radius: 3px;
+}

@@ -1,0 +1,8 @@
+.paper {
+    position: relative;
+    width: 210mm;
+    height: 297mm;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    margin: 20px auto;
+}

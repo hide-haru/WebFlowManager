@@ -1,0 +1,24 @@
+.clientListPage {
+    margin: 5px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.searchArea {
+    background-color: #fff;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+
+.searchBox {
+    display: flex;
+    gap: 20px;
+}
+
+.boxTtitle {
+    width: 100%;
+    display:flex;
+    justify-content: space-between;
+}

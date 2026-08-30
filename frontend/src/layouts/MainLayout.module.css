@@ -1,0 +1,14 @@
+.mainOpen {
+    margin-left: 245px;
+    width: calc(100% - 245px);
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease;
+}
+
+.mainClose {
+    margin-left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    transition: margin-left 0.3s ease;
+}
+

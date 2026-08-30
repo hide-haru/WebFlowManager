@@ -1,0 +1,104 @@
+/* reset.css */
+
+/* =========================
+   Box sizing
+========================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+/* =========================
+   Margin / Padding
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* =========================
+   HTML / Body
+========================= */
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* =========================
+   Form
+========================= */
+
+button,
+input,
+textarea,
+select {
+    font: inherit;
+}
+
+/* =========================
+   Button
+========================= */
+
+button {
+    font: inherit;
+    cursor: pointer;
+}
+
+/* =========================
+   Image
+========================= */
+
+img,
+picture,
+video,
+canvas,
+svg {
+    display: block;
+    max-width: 100%;
+}
+
+/* =========================
+   Text
+========================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    /* font-size: inherit; */
+    /* font-weight: inherit; */
+}
+
+p {
+    overflow-wrap: break-word;
+}
+
+/* =========================
+   List
+========================= */
+
+ul,
+ol {
+    list-style: none;
+}
+
+/* =========================
+   Link
+========================= */
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
